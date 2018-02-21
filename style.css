@@ -1,0 +1,149 @@
+.chart {
+  --scale: 100;
+
+  /* Setup the grid */
+  display: grid;
+  grid-auto-columns: 5fr;
+  grid-template-rows: repeat(var(--scale), minmax(0, 5fr)) 1.4rem;
+  grid-column-gap: 30px;
+
+  /* Generate background guides */
+  /* (sub-pixel rounding errors make this imperfect) */
+  --line-every: 20;
+  background-image: linear-gradient(to bottom, #ccc 1px, transparent 1px);
+  background-size: 100% calc((100% - 1.4rem) / var(--scale) * var(--line-every));
+  
+  /* other styles… */
+  margin: 2em auto 1em;
+  padding: 0 1em;
+  position: relative;
+  width: 50vw;
+  height: calc(50vh - 4em);
+  padding-top: 70px;
+}
+
+.chart::after {
+  background: #fff;
+  bottom: 10;
+  content: ' ';
+  height: 1rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+
+/* Dates… */
+/* ------ */
+
+.date {
+  align-items: center;
+  display: flex;
+  font-weight: bold;
+  grid-row-start: -2;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
+
+
+/* Each bar on the graph… */
+/* ---------------------- */
+
+.bar {
+  grid-row: var(--start) / -2;
+  
+  /* Background-Color */
+  background-color: #fc808e;
+  background-size: 1600% 100%;
+  background-position: calc(var(--start) * 1%) 0;
+  
+  /* Other styles… */
+  /*border-radius: 5px 5px 0 0;*/
+  color: #000;
+  list-style: none;
+  position: relative;
+}
+
+.value {
+  background: #fff;
+  bottom: 100%;  
+  display: inline-block;
+  left: 50%;
+  padding: 0 0.4em;
+  position: absolute;
+  transform: translate(-50%, -1px);
+}
+
+.left{
+  margin-left: 20px;
+}
+
+.right{
+  float: right;
+   
+}
+
+.right img{
+  padding-left: 10px;
+}
+
+table{
+	margin: 0 auto;
+}
+
+.rect{
+    width: 80px;
+    height: 80px;
+   /* background-color: #fc808e;*/
+    transform: rotate(43deg);
+    margin: 50px; /* Location Adjustment */
+    border-radius: 23%;
+    margin-top: 10px;
+}
+
+#rect1{
+	background-color: #fc808e;
+}
+#rect2{
+	background-color: #779ec9;
+}
+#rect3{
+	background-color: #75bab9;
+}
+
+.text-style-2,p,.logo{
+  font-family: HelveticaNeue;
+  font-size: 15px;
+  font-weight: 500;
+  color: #9c9c9c;
+  margin-left: 10px;
+  margin-top: 50px;
+}
+
+#pra{
+	/*margin: 0 auto;*/
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 0;
+}
+
+p{
+	padding-left: 30px;
+}
+
+.logo{
+	font-size: 30px;
+}
+
+/* Global helpers… */
+/* --------------- */
+
+:root {
+  font-size: 80%;
+  font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
